@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ascii-art-web project</title>
+        <meta charset = utf-8>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css" type="text/css">
+    </head>
+    <body>
+
+        <div id="header" class = "header">
+            <h1 id="title">ascii art web</h1>
+            <button id="buttonStart" class="hide-item" onclick="onStartClick()"><span>write</span><i></i></button>
+            
+            <div id="export" class = "export">
+                <form class="exoprtForm" method="POST" action="/export">
+                    {{if ne . "No ascii font"}}
+                        {{if ne . "here will be ascii-art"}}
+                            <a id="downloadBtn" class="downloadBtn" onclick="onDownloadClick()" type="button"  download="result">Download</a>
+                        {{end}}
+                    {{end}}
+                    <input id="strID" name="str" style="display: none;">
+                    <pre name="str" id="output" class = "output">{{.}}</pre>
+                </form>
+            </div>
+
+        </div>
+
+        <div id="containerMain" class="containerMain">
+            <div id="main" class = "main">
+                <form method="POST" action="/ascii-art">
+                    <div class = "inputBox">
+                        <label id="entering" for="inputStr">Enter something:</label><br>
+                        <textarea id="name" class="inputString"  name="inputString" placeholder = "some text" rows="2" cols="50" required = "required"></textarea>
+                    </div>    
+                    <div class="container">
+                        <label for="fonts">Choose a font:</label>
+                        <div class="fonts" id="fonts" name="fonts">
+                            <input type="radio" id="standard" name="font" value="standard">
+                            <label for="standard">standard</label><br>
+                            <input type="radio" id="thinkertoy" name="font" value="thinkertoy">
+                            <label for="thinkertoy">thinkertoy</label><br>
+                            <input type="radio" id="shadow" name="font" value="shadow">
+                            <label for="shadow">shadow</label><br>
+                        </div>
+                    </div>
+                    <input type="submit" value="WRITE">
+                </form>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            function onDownloadClick(){
+                const text = $('#output').text();
+                ar = text.split(/\r?\n/)
+                str = ""
+                for (let i = 0; i < ar.length; i++) {
+                    str += "~"+ar[i];
+                }
+                const newStr = str.replace(new RegExp("\\\\", "g"), "±");
+
+                document.getElementById("downloadBtn").setAttribute("href", "http://localhost:8080/export/"+newStr);
+            }
+            function onStartClick() {
+                var header = document.getElementById('header');
+                var x = document.getElementById('main');
+                var y = document.getElementById('buttonStart');
+                var a = document.getElementById('title');
+                var b = document.getElementById('output');
+                var c = document.getElementById('containerMain');
+                var h = document.getElementById('header');
+                x.style.display = 'block';
+                y.style.display = 'none';
+                a.style.display = 'none';
+                b.style.display = 'none';
+                c.style.height = '90vh';
+                h.style.display = 'none';
+                header.style.display = 'none';
+            }
+        </script>
+    </body>
+</html>
