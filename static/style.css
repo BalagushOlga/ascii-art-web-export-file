@@ -1,0 +1,230 @@
+* {
+    box-sizing: border-box;
+}
+
+body {                
+    color: lightgray;
+    text-align: center;
+    background-color: rgb(50, 50, 50);
+    font-size: 30px;
+    font-family:'Courier New', monospace;
+    justify-content: center; 
+    align-items: center; 
+    height: 20vh;
+}
+
+/*#region download*/
+body .header .export .exoprtForm .downloadBtn { 
+    color: lightgray;
+    font-size: 20px;
+    text-decoration: none; 
+}
+
+body .header .export .exoprtForm .downloadBtn:link {
+    text-decoration: none;
+}
+
+body .header .export .exoprtForm .downloadBtn:visited { 
+    text-decoration: none;
+}
+
+body .header .export .exoprtForm .downloadBtn:hover { 
+    text-decoration: none; 
+    letter-spacing: 0.1em;
+    font-size: 25px;
+    color: yellow;
+}
+
+body .header .export .exoprtForm .downloadBtn:active { 
+    text-decoration: none; 
+}
+/*#endregion download*/
+
+/*#region header*/
+.containerMain{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+h1 {
+    position: relative;
+    color: yellow;
+    font-size: 130px;
+    justify-content: center; 
+    align-items: center; 
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+}
+/*#region button animation*/
+button{
+    position: relative;
+    background: #444;
+    color:#fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    transition: 0.5s;
+    padding: 10px 30px;
+    border: none;
+
+    margin-bottom: 2rem;
+}
+button:hover
+{
+    letter-spacing: 0.25em;
+    background: yellow;
+    box-shadow: 0 0 35px yellow;
+    color: yellow;
+}
+button::before{
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: rgb(50, 50, 50);
+    color: white;
+}
+button span {
+    position: relative;
+    z-index: 1;
+}
+button i {
+    position: absolute;
+    inset: 0;
+    display: block;
+    border-radius: 50%;
+}
+button i::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 100%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: rgb(50, 50, 50);
+    border: 2px solid yellow;
+    transition: 0.5s;
+    border-radius: 50%;
+}
+button:hover i::before{
+    left: 0%;
+    transform: translateX(-50%) rotate(45deg);
+    box-shadow: 39px 38px yellow;
+}
+button i::after {
+    border-radius: 50%;
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: rgb(50, 50, 50);
+    border: 2px solid yellow;
+    transition: 0.5s;
+}
+button:hover i::after{
+    left: 100%;
+    transform: translateX(-50%) rotate(-45deg);
+    box-shadow: 38px -38px yellow;
+}
+/*#endregion button animation*/
+/*#endregion header*/
+/*#region form*/
+.main{
+    width: 40%;
+    display: none;
+}
+.fonts{
+    text-align: left;
+}
+input{
+    color: white;
+    letter-spacing: 2px;
+    background-color: rgb(50, 50, 50);
+    border: 1px solid darkgray;
+    font-weight: bold;
+}
+.inputString{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    resize: both;
+    min-height: 40px;
+    line-height: 20px;
+    background-color: rgb(50, 50, 50);
+    color: white;
+}
+::placeholder {
+    color: rgb(188, 188, 188);
+    opacity: 1;
+}
+/*#endregion form*/
+/*#region output*/
+pre{
+    color: white;
+}
+.output{
+    width: 100%;
+}
+/*#endregion output*/
+
+/*#region for responsive web design*/
+@media only screen and (max-width: 800px) {
+    h1 {font-size: 75px;}
+    button {font-size: 1em;}
+    .main {width: 90%;}
+    button:hover i::before{
+        left: 0%;
+        transform: translateX(-50%) rotate(45deg);
+        box-shadow: 30px 30px yellow;
+    }
+    button:hover i::after{
+        left: 100%;
+        transform: translateX(-50%) rotate(-45deg);
+        box-shadow: 30px -30px yellow;
+    }
+    body {font-size: 20px;}
+    body .header .export .exoprtForm .downloadBtn {
+        font-size: 15px;
+    }
+    
+    body .header .export .exoprtForm .downloadBtn:hover {
+        letter-spacing: 0.07em;
+        font-size: 20px;
+    }
+}
+@media only screen and (min-width: 800px) {
+    h1 {font-size: 130px;}
+    button {font-size: 1.5em;}
+    .main {width: 40%;}
+    button:hover i::before{
+        left: 0%;
+        transform: translateX(-50%) rotate(45deg);
+        box-shadow: 40px 42px yellow;
+    }
+    button:hover i::after{
+        left: 100%;
+        transform: translateX(-50%) rotate(-45deg);
+        box-shadow: 42px -42px yellow;
+    }
+    body {font-size: 25px;}
+
+    body .header .export .exoprtForm .downloadBtn {
+        font-size: 20px;
+        text-decoration: none; 
+    }
+
+    body .header .export .exoprtForm .downloadBtn {
+        font-size: 20px;
+    }
+    
+    body .header .export .exoprtForm .downloadBtn:hover {
+        letter-spacing: 0.1em;
+        font-size: 25px;
+    }
+}
+/*#endregion for responsive web design*/
